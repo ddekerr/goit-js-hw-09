@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.container button {
+  width: 100px;
+  height: 50px;
+
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #eee;
+  box-shadow: 2px 2px 2px #aaa;
+  transition-duration: 0.3s;
+
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.container button:not(:disabled):hover,
+.container button:not(:disabled):focus {
+  background-color: #ddd;
+  box-shadow: 2px 2px 5px #aaa;
+}
+
+.container button:first-child {
+  margin-right: 20px;
+}
