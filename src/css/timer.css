@@ -1,0 +1,33 @@
+.timer {
+  width: 75%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.field {
+  position: relative;
+  width: 25%;
+}
+
+.field:not(:last-child)::after{
+  content: ':';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+
+  display: block;
+
+  font-size: 45px;
+}
+
+.field span {
+  display: block;
+
+  text-align: center;
+}
+
+.field .value {
+  font-size: 50px;
+}
