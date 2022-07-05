@@ -2,6 +2,7 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
+
 // config for flatPickr instance
 const flatpickOptions = {
   enableTime: true,
@@ -13,11 +14,19 @@ const flatpickOptions = {
   },
 };
 
+// config for Notify pop-up
+const notifyOptions = {
+  timeout: 2000,
+  clickToClose: true,
+  useIcon: false,
+  fontSize: '16px',
+  cssAnimationStyle: 'from-right',
+}
+
 // flatpickr instance
 const flatPickr = flatpickr('#datetime-picker', flatpickOptions);
 const btnStart = document.querySelector('[data-start]');
 let deadlineDate = null;
-let intervalId = null;
 
 const timerRefs = {
   days: document.querySelector('[data-days]'),
@@ -26,10 +35,13 @@ const timerRefs = {
   seconds: document.querySelector('[data-seconds]'),
 }
 
+//event click for start timer button
+btnStart.addEventListener('click', setTimer);
+
 // choosing date after Date.now() and undisabling start button or Notify failure
 function chooseRightDate(date) {
   if(date < Date.now()) {
-    Notify.failure('Please choose a date in the future!', { timeout: 2000 });
+    Notify.failure('Please choose a date in the future!', notifyOptions);
     return null;
   }
   if(btnStart.hasAttribute('disabled')) {
@@ -39,21 +51,27 @@ function chooseRightDate(date) {
   return date;
 }
 
-btnStart.addEventListener('click', setTimer);
-
+// call timer every second if time left more then 1 second
 function setTimer(event) {
+  // disabled start button when timer starts
   event.target.setAttribute('disabled', true);
+  // call timer every second
   const intervalId = setInterval(() => {
     const deltaTime = deadlineDate - Date.now();
+    // stop timer if time less then 1 second
     if (deltaTime <= 1000) {
       clearInterval(intervalId);
     }
-    const timer = convertMs(deltaTime);
-    timerRefs.days.textContent = addLeadingZero(timer.days); 
-    timerRefs.hours.textContent = addLeadingZero(timer.hours); 
-    timerRefs.minutes.textContent = addLeadingZero(timer.minutes); 
-    timerRefs.seconds.textContent = addLeadingZero(timer.seconds); 
+    showTimerOnHTML(convertMs(deltaTime));
   }, 1000);
+}
+
+// insert timer fields to html
+function showTimerOnHTML(timer) {
+  timerRefs.days.textContent = addLeadingZero(timer.days); 
+  timerRefs.hours.textContent = addLeadingZero(timer.hours); 
+  timerRefs.minutes.textContent = addLeadingZero(timer.minutes); 
+  timerRefs.seconds.textContent = addLeadingZero(timer.seconds); 
 }
 
 function convertMs(ms) {
