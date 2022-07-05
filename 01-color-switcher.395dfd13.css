@@ -1,0 +1,2 @@
+.container{height:50vh;justify-content:center;align-items:center;display:flex}.container button{width:100px;height:50px;cursor:pointer;text-transform:uppercase;background-color:#eee;border:none;border-radius:5px;font-size:16px;transition-duration:.3s;box-shadow:2px 2px 2px #aaa}.container button:not(:disabled):hover,.container button:not(:disabled):focus{background-color:#ddd;box-shadow:2px 2px 5px #aaa}.container button:first-child{margin-right:20px}
+/*# sourceMappingURL=01-color-switcher.395dfd13.css.map */
