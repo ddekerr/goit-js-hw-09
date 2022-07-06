@@ -28,7 +28,9 @@ const flatpickOptions = {
   onClose(selectedDates) {
     chooseRightDate(selectedDates[0])
     .then(() => {
+      // activated start button
       btnStart.removeAttribute('disabled');
+      // set dedline for timer
       deadlineDate = selectedDates[0];
     })
     .catch(() => {
@@ -42,7 +44,7 @@ flatpickr('#datetime-picker', flatpickOptions);
 //event click for start timer button
 btnStart.addEventListener('click', setTimer);
 
-// choosing date after Date.now() and undisabling start button or Notify failure
+// check the date and return success or error
 function chooseRightDate(date) {
   return new Promise((resolve, reject) => {
     if(date < Date.now()) {
