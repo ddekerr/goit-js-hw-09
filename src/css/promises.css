@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 auto;
+  width: 500px;
+}
+
+.form input {
+  width: 100%;
+  margin-top: 5px;
+  padding: 10px 15px;
+
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form button {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+
+  transition-duration: 250ms;
+}
+
+.form button:hover,
+.form button:focus  {
+  background-color: #0069d9;
+}
