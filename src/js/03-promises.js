@@ -26,6 +26,8 @@ function showPromises(e) {
       Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
     });
   }
+
+  document.querySelector('.form').reset();
 }
 
 // creating Promise with random resolve or reject result
