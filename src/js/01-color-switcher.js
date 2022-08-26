@@ -7,9 +7,7 @@ btnStop.addEventListener('click', stopChangeBodyColor);
 
 // start changing body color every second
 function startChangeBodyColor() {
-  idInterval = setInterval(() => {
-    document.body.style.backgroundColor = getRandomHexColor()
-  }, 1000);
+  idInterval = setInterval(() => document.body.style.backgroundColor = getRandomHexColor(), 1000);
   toogleDisabledButton();
 }
 

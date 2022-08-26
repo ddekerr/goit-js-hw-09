@@ -8,8 +8,19 @@ const refs = {
   createBtn: document.querySelector('button'),
 }
 
-refs.createBtn.addEventListener('click', showPromises);
+// refs.createBtn.addEventListener('click', onSubmit);
+document.querySelector('.form').addEventListener('submit', onSubmit);
 
+
+function onSubmit(e) {
+  e.preventDefault();
+
+  const {
+    elements: {delay, step, amount} 
+  } = e.currentTarget;
+
+  console.log(step.value)
+}
 
 function showPromises(e) {
   e.preventDefault();
