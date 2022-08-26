@@ -6,17 +6,11 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 const btnStart = document.querySelector('[data-start]');
 let deadlineDate = null;
 const timerRefs = {
+  timer: document.querySelector('.timer'),
   days: document.querySelector('[data-days]'),
   hours: document.querySelector('[data-hours]'),
   minutes: document.querySelector('[data-minutes]'),
   seconds: document.querySelector('[data-seconds]'),
-}
-
-// config for Notify pop-up
-const notifyOptions = {
-  timeout: 2000,
-  clickToClose: true,
-  cssAnimationStyle: 'from-right',
 }
 
 // config for flatPickr instance
@@ -34,7 +28,7 @@ const flatpickOptions = {
       deadlineDate = selectedDates[0];
     })
     .catch(() => {
-      Notify.failure("Please choose a date in the future", notifyOptions);
+      Notify.failure("Please choose a date in the future", {timeout: 2000, clickToClose: true, cssAnimationStyle: 'from-right'});
     });
   },
 };
